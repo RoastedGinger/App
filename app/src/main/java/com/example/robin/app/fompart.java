@@ -4,14 +4,16 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,34 +27,53 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Participate extends AppCompatActivity implements View.OnClickListener{
+public class fompart extends AppCompatActivity implements View.OnClickListener{
 
     Button upload,choose;
     EditText name;
     ImageView image;
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adapter;
     private final int img=1;
     Bitmap bitmap;
-    String Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/.php";
+    String part,Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/updatestatus.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.status_upload);
-        upload = findViewById(R.id.upload);
-        choose = findViewById(R.id.choose);
-        name =  findViewById(R.id.name);
-        image = findViewById(R.id.image);
+        setContentView(R.layout.activity_fompart);
+        upload = findViewById(R.id.upload1);
+        choose = findViewById(R.id.choose1);
+        name =  findViewById(R.id.name1);
+        spinner = findViewById(R.id.spinner1);
+        image = findViewById(R.id.image1);
         choose.setOnClickListener(this);
         upload.setOnClickListener(this);
+
+        adapter = ArrayAdapter.createFromResource(this,R.array.PART, android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                part = spinner.getSelectedItem().toString();
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.choose:
+            case R.id.choose1:
                 selectimage();
                 break;
-            case R.id.upload:
+            case R.id.upload1:
                 uploadImage();
                 break;
         }
@@ -91,7 +112,7 @@ public class Participate extends AppCompatActivity implements View.OnClickListen
 
                         //JSONObject jsonObject = new JSONObject(response);
                         //String Response = jsonObject.getString("response");
-                        Toast.makeText(Participate.this,response,Toast.LENGTH_LONG).show();
+                        Toast.makeText(fompart.this,response,Toast.LENGTH_LONG).show();
                         image.setImageResource(0);
                         image.setVisibility(View.GONE);
                         name.setText("");
@@ -102,7 +123,7 @@ public class Participate extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onErrorResponse(VolleyError error) {
                 String voll = error.toString();
-                Toast.makeText(Participate.this,voll,Toast.LENGTH_LONG).show();
+                Toast.makeText(fompart.this,voll,Toast.LENGTH_LONG).show();
 
             }
         }){
@@ -111,10 +132,11 @@ public class Participate extends AppCompatActivity implements View.OnClickListen
                 Map<String,String> params = new HashMap<>();
                 params.put("name",name.getText().toString());
                 params.put("image",imagetoString(bitmap));
+                params.put("gender",part);
                 return params;
             }
         };
-        MySingleton.getInstance(Participate.this).addToRequestQue(request);
+        MySingleton.getInstance(fompart.this).addToRequestQue(request);
     }
 
     private String imagetoString(Bitmap bitmap){

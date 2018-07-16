@@ -22,10 +22,10 @@
         </activity>
         <activity
             android:name=".Status_Upload"
-            android:label="Update Status"
-            android:theme="@style/AppTheme1"></activity>
+            android:label="Update Status" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Participate"></activity>
+        <activity android:name=".Participate" />
+        <activity android:name=".fompart"></activity>
     </application>
 
 </manifest>

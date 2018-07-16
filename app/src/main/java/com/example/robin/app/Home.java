@@ -21,7 +21,7 @@ import android.webkit.WebViewClient;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public final class Home extends Fragment {
+public  class Home extends Fragment {
     WebView mWebView;
 
 
@@ -70,7 +70,7 @@ public final class Home extends Fragment {
     private void webViewGoBack(){
         mWebView.goBack();
     }
-
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

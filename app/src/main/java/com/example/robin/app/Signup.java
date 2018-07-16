@@ -31,13 +31,13 @@ import java.util.Map;
 
 public class Signup extends Fragment {
 
-    String gender,Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/createaccount.php";
+    String Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/createaccount.php";
     Button button;
     Spinner spinner;
     ImageView imageView,plock1,plock0;
     EditText username,password,repassword,phno;
     ArrayAdapter<CharSequence> adapter;
-    String un,ps,repas,phn;
+    String gender,un,ps,repas,phn;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +55,24 @@ public class Signup extends Fragment {
         button = getActivity().findViewById(R.id.signup1);
         plock1 = getActivity().findViewById(R.id.plock);
         plock0 = getActivity().findViewById(R.id.plock0);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                gender = spinner.getSelectedItem().toString();
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -62,11 +80,12 @@ public class Signup extends Fragment {
                 imageView.setVisibility(View.VISIBLE);
                 plock0.setVisibility(View.INVISIBLE);
                 plock1.setVisibility(View.VISIBLE);
-                // open();
+                open();
             }
         });
 
     }
+
 
     public void open(){
         StringRequest request = new StringRequest(Request.Method.POST, Server_url,
