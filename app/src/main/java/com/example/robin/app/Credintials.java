@@ -1,0 +1,41 @@
+package com.example.robin.app;
+
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
+
+public class Credintials extends AppCompatActivity{
+
+    TextView textView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_credintials);
+        textView = findViewById(R.id.icon);
+        Login login = new Login();
+        Typeface face = Typeface.createFromAsset(getAssets(),"font/Bilbo Swash Caps.ttf");
+        textView.setTypeface(face);
+        SharedPreferences prefs = getSharedPreferences("user",MODE_PRIVATE);
+        String restoredText = prefs.getString("status", null);
+        if (restoredText != null) {
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
+        }
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.cre,login);
+        fragmentTransaction.addToBackStack("login");
+        fragmentTransaction.commit();
+      //  Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
+    }
+}
