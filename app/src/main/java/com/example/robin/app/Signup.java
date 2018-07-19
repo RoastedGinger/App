@@ -2,8 +2,11 @@ package com.example.robin.app;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +37,8 @@ public class Signup extends Fragment {
     String Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/createaccount.php";
     Button button;
     Spinner spinner;
-    ImageView imageView,plock1,plock0;
+    TextView textView;
+    ImageView imageView,plock1,plock0,gone;
     EditText username,password,repassword,phno;
     ArrayAdapter<CharSequence> adapter;
     String gender,un,ps,repas,phn;
@@ -48,15 +52,92 @@ public class Signup extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         username = getActivity().findViewById(R.id.username1);
-        imageView = getActivity().findViewById(R.id.show);
         password = getActivity().findViewById(R.id.password1);
         repassword = getActivity().findViewById(R.id.rpassword1);
         phno = getActivity().findViewById(R.id.phno1);
         button = getActivity().findViewById(R.id.signup1);
         plock1 = getActivity().findViewById(R.id.plock);
         plock0 = getActivity().findViewById(R.id.plock0);
+        gone = getActivity().findViewById(R.id.show);
+        imageView = getActivity().findViewById(R.id.visible);
+        password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                imageView.setVisibility(View.INVISIBLE);
+                gone.setVisibility(View.VISIBLE);
+            }
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String pass = password.getText().toString();
+                String getEmail = repassword.getText().toString();
+                if(!pass.equals(getEmail))
+                {
+
+                    imageView.setVisibility(View.INVISIBLE);
+                    gone.setVisibility(View.VISIBLE);
+                    plock0.setVisibility(View.INVISIBLE);
+                    plock1.setVisibility(View.VISIBLE);
+                }
+
+                else{
+                    imageView.setVisibility(View.VISIBLE);
+                    plock0.setVisibility(View.VISIBLE);
+                    gone.setVisibility(View.VISIBLE);
+                    plock1.setVisibility(View.INVISIBLE);
+                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gun_check1);
+                    ring.start();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+        });
+
+
+        repassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                imageView.setVisibility(View.INVISIBLE);
+                plock0.setVisibility(View.INVISIBLE);
+                plock1.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                String pass = password.getText().toString();
+                String getEmail = repassword.getText().toString();
+
+
+                if (pass.equals(getEmail)) {
+                    imageView.setVisibility(View.VISIBLE);
+                    plock0.setVisibility(View.VISIBLE);
+                    gone.setVisibility(View.VISIBLE);
+                    plock1.setVisibility(View.INVISIBLE);
+                    MediaPlayer ring= MediaPlayer.create(getActivity(),R.raw.gun_check1);
+                    ring.start();
+                }
+
+                else{
+                    imageView.setVisibility(View.INVISIBLE);
+                    plock0.setVisibility(View.INVISIBLE);
+                    plock1.setVisibility(View.VISIBLE);
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+        });
+        spinner = getActivity().findViewById(R.id.spinner);
+        adapter = ArrayAdapter.createFromResource(getActivity(),R.array.GENDER, android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -72,20 +153,15 @@ public class Signup extends Fragment {
             }
         });
 
-
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                imageView.setVisibility(View.VISIBLE);
-                plock0.setVisibility(View.INVISIBLE);
-                plock1.setVisibility(View.VISIBLE);
                 open();
             }
         });
 
     }
-
 
     public void open(){
         StringRequest request = new StringRequest(Request.Method.POST, Server_url,
@@ -119,6 +195,5 @@ public class Signup extends Fragment {
             }
         };
         MySingleton.getInstance(getActivity()).addToRequestQue(request);
-
     }
 }

@@ -38,12 +38,13 @@ import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class Login extends Fragment {
+public class Login extends Fragment  {
     String Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/login1.php";
      public Button logg;
     EditText username,password;
     String un,ps;
     TextView signup;
+    ImageView imageView;
      public ProgressBar p;
      public Login()
      {
@@ -71,7 +72,6 @@ public class Login extends Fragment {
 
 
 
-
             @Override
             public void onClick(View view) {
 
@@ -83,10 +83,13 @@ public class Login extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getFragmentManager();
-                Signup signup = new Signup();
+                Signup signin_form = new Signup();
+                Login login_page = (Login) fragmentManager.findFragmentByTag("login666");
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.cre,signup);
+                fragmentTransaction.remove(login_page);
                 fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.add(R.id.cre,signin_form,"signin");
+                // getFragmentManager().popBackStackImmediate();
                 fragmentTransaction.commit();
             }
         });
@@ -137,6 +140,5 @@ public class Login extends Fragment {
             }
         };
         MySingleton.getInstance(getActivity()).addToRequestQue(request);
-
     }
 }

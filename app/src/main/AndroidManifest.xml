@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Credintials"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,6 @@
             android:name=".Status_Upload"
             android:label="Update Status" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Participate" />
         <activity android:name=".fompart"></activity>
     </application>
 

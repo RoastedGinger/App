@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -33,9 +34,19 @@ public class Credintials extends AppCompatActivity{
         }
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.cre,login);
-        fragmentTransaction.addToBackStack("login");
+        fragmentTransaction.add(R.id.cre,login,"login666");
         fragmentTransaction.commit();
-      //  Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_LONG).show();
     }
+
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStackImmediate();
+        } else {
+            super.onBackPressed();
+            //moveTaskToBack(true);
+        }
+    }
+
 }

@@ -71,4 +71,10 @@ public class MainActivity extends Activity{
         fragmentTransaction.addToBackStack("home");
         fragmentTransaction.commit();
     }
+    @Override
+    public void onBackPressed() {
+
+            super.onBackPressed();
+            moveTaskToBack(true);
+    }
 }

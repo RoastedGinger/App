@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="50dp"
+    android:id="@+id/log"
     android:background="#ffffcc"
     tools:context="com.example.robin.app.Login">
 
@@ -104,20 +105,20 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/forget"
             android:layout_alignBottom="@+id/forget"
             android:layout_alignParentEnd="true"
-            android:text="Guest Login" />
+            android:text="Guest Login"
+            android:textColor="@color/colorPrimaryDark" />
 
         <ProgressBar
+            android:id="@+id/p"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/p"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:visibility="gone"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:visibility="gone" />
     </RelativeLayout>
 </LinearLayout>

@@ -36,7 +36,7 @@ public class fompart extends AppCompatActivity implements View.OnClickListener{
     ArrayAdapter<CharSequence> adapter;
     private final int img=1;
     Bitmap bitmap;
-    String part,Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/updatestatus.php";
+    String part,Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/updatefom.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
