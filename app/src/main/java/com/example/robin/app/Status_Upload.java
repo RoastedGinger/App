@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.service.media.MediaBrowserService;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
@@ -33,7 +34,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class Status_Upload extends AppCompatActivity implements View.OnClickListener{
 
-    ImageButton upload,choose;
+    ImageButton upload,choose,camera;
     EditText name;
     ImageView image;
     private final int img=1;
@@ -48,7 +49,9 @@ public class Status_Upload extends AppCompatActivity implements View.OnClickList
         choose = findViewById(R.id.choose);
         name =  findViewById(R.id.name);
         image = findViewById(R.id.image);
+        camera = findViewById(R.id.open_camera);
         choose.setOnClickListener(this);
+        camera.setOnClickListener(this);
         upload.setOnClickListener(this);
     }
 
@@ -64,7 +67,14 @@ public class Status_Upload extends AppCompatActivity implements View.OnClickList
             case R.id.upload:
                 uploadImage();
                 break;
+            case R.id.open_camera:
+                 open_camera();
         }
+    }
+
+    private void open_camera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 1);
     }
 
     private void selectimage(){

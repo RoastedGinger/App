@@ -40,7 +40,7 @@
         android:layout_alignTop="@+id/choose"
         android:layout_marginEnd="140dp"
         android:background="@drawable/bshapes"
-        android:src="@drawable/upload" />
+        android:src="@drawable/ok" />
 
     <ImageButton
         android:id="@+id/open_camera"
@@ -56,8 +56,9 @@
         android:layout_width="match_parent"
         android:background="@drawable/eshapes"
         android:layout_marginRight="90dp"
-        android:text="hello android"
+        android:hint="Type a Status"
         android:id="@+id/status"
+        android:padding="10dp"
         android:layout_below="@+id/name"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"

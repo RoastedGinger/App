@@ -113,7 +113,7 @@ public class Login extends Fragment  {
                             Toast.makeText(getActivity(), res,Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getActivity(),MainActivity.class);
                             startActivity(intent);
-                            fragmentTransaction.remove(Login.this).commit();
+//                            fragmentTransaction.remove(Login.this).commit();
                         }
                         else
                         {
