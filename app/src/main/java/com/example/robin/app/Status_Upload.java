@@ -1,15 +1,20 @@
 package com.example.robin.app;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,16 +29,19 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.app.Activity.RESULT_OK;
+
 public class Status_Upload extends AppCompatActivity implements View.OnClickListener{
 
-    Button upload,choose;
+    ImageButton upload,choose;
     EditText name;
     ImageView image;
     private final int img=1;
     Bitmap bitmap;
     String Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/updatestatus.php";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status_upload);
         upload = findViewById(R.id.upload);
@@ -43,6 +51,8 @@ public class Status_Upload extends AppCompatActivity implements View.OnClickList
         choose.setOnClickListener(this);
         upload.setOnClickListener(this);
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -65,7 +75,7 @@ public class Status_Upload extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode==img && resultCode==RESULT_OK && data!=null){
@@ -90,7 +100,7 @@ public class Status_Upload extends AppCompatActivity implements View.OnClickList
 
                         //JSONObject jsonObject = new JSONObject(response);
                         //String Response = jsonObject.getString("response");
-                        Toast.makeText(Status_Upload.this,response,Toast.LENGTH_LONG).show();
+                       // Toast.makeText(Status_Upload.this,response,Toast.LENGTH_LONG).show();
                         image.setImageResource(0);
                         image.setVisibility(View.GONE);
                         name.setText("");

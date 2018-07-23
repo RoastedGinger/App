@@ -8,7 +8,12 @@
     tools:context="com.example.robin.app.MainActivity">
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
+        android:id="@+id/stats">
+    </RelativeLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
@@ -17,5 +22,6 @@
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation" >
     </android.support.design.widget.BottomNavigationView>
+
 
 </RelativeLayout>

@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/lib/com.example.robin.app"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="50dp"
     android:id="@+id/log"
     android:background="#ffffcc"
     tools:context="com.example.robin.app.Login">
 
+
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="50sp"
+            android:paddingStart="50sp"
+            android:paddingEnd="50sp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="User Name"
+                android:inputType="textAutoComplete"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:paddingStart="30sp"
                 android:maxLines="1" />
@@ -41,7 +45,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -91,7 +97,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="50sp"
+        android:paddingEnd="50sp">
 
         <TextView
             android:id="@+id/forget"
@@ -100,6 +108,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:text="forget Password?"
+            android:layout_marginBottom="50sp"
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView
@@ -110,15 +119,18 @@
             android:layout_alignBottom="@+id/forget"
             android:layout_alignParentEnd="true"
             android:text="Guest Login"
+
             android:textColor="@color/colorPrimaryDark" />
 
-        <ProgressBar
-            android:id="@+id/p"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:visibility="gone" />
+            android:visibility="invisible"
+            app:indicatorColor="@color/colorPrimaryDark"
+            app:indicatorName="BallPulseIndicator" />
     </RelativeLayout>
+
 </LinearLayout>

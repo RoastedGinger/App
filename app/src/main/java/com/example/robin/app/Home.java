@@ -1,6 +1,9 @@
 package com.example.robin.app;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -19,11 +22,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.github.fabtransitionactivity.SheetLayout;
+
+import butterknife.ButterKnife;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public  class Home extends Fragment {
     WebView mWebView;
+    SheetLayout mSheetLayout;
+    FloatingActionButton mFab;
 
+    private static final int REQUEST_CODE = 1;
 
     private Handler handler = new Handler(){
         @Override
@@ -76,9 +86,11 @@ public  class Home extends Fragment {
         super.onActivityCreated(savedInstanceState);
         FloatingActionButton fab = getActivity().findViewById(R.id.fab1);
         fab.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
+
                 if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.M){
                     Intent intent = new Intent(getActivity(),Status_Upload.class);
                     startActivity(intent);

@@ -30,6 +30,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.io.File;
 import java.time.Duration;
@@ -44,7 +45,9 @@ public class Login extends Fragment  {
     EditText username,password;
     String un,ps;
     TextView signup;
+    AVLoadingIndicatorView avi;
     ImageView imageView;
+    FragmentTransaction fragmentTransaction;
      public ProgressBar p;
      public Login()
      {
@@ -62,20 +65,17 @@ public class Login extends Fragment  {
    public void onViewCreated(View view, Bundle savedInstanceState)
     {
         super.onViewCreated(view,savedInstanceState);
-
+        avi = getActivity().findViewById(R.id.avi);
         username = getActivity().findViewById(R.id.username1);
-        p=getActivity().findViewById(R.id.p);
         password = getActivity().findViewById(R.id.password1);
         signup = getActivity().findViewById(R.id.signup);
         logg =getActivity().findViewById(R.id.login);
         logg.setOnClickListener(new View.OnClickListener() {
 
-
-
             @Override
             public void onClick(View view) {
-
-                post();
+                avi.show();
+              post();
             }
         });
 
@@ -85,7 +85,7 @@ public class Login extends Fragment  {
                 FragmentManager fragmentManager = getFragmentManager();
                 Signup signin_form = new Signup();
                 Login login_page = (Login) fragmentManager.findFragmentByTag("login666");
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+               fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.remove(login_page);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.add(R.id.cre,signin_form,"signin");
@@ -113,10 +113,11 @@ public class Login extends Fragment  {
                             Toast.makeText(getActivity(), res,Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getActivity(),MainActivity.class);
                             startActivity(intent);
+                            fragmentTransaction.remove(Login.this).commit();
                         }
                         else
                         {
-                            p.setVisibility(View.GONE);
+                            avi.hide();
                             Toast.makeText(getActivity(), "invalid user name or password",Toast.LENGTH_LONG).show();
                         }
                     }
@@ -124,9 +125,8 @@ public class Login extends Fragment  {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String voll = error.toString();
-                p.setVisibility(View.GONE);
                 Toast.makeText(getActivity(),voll,Toast.LENGTH_LONG).show();
-
+                avi.hide();
             }
         }){
             @Override
