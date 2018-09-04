@@ -75,8 +75,7 @@ public class Login extends Fragment  {
             @Override
             public void onClick(View view) {
                 avi.show();
-                Intent intent = new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
+
                 post();
             }
         });
