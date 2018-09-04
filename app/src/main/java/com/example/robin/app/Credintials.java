@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,11 +33,15 @@ public class Credintials extends AppCompatActivity{
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             startActivity(intent);
         }
+
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+       // fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.enter_from_left);
         fragmentTransaction.add(R.id.cre,login,"login666");
         fragmentTransaction.commit();
-    }
+
+        }
+
 
 
     @Override

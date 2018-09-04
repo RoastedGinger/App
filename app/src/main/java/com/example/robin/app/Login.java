@@ -75,7 +75,9 @@ public class Login extends Fragment  {
             @Override
             public void onClick(View view) {
                 avi.show();
-              post();
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+                post();
             }
         });
 
@@ -105,7 +107,6 @@ public class Login extends Fragment  {
                         String res=response.toString().trim();
                         if(!res.equals("0"))
                         {
-
                             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putString("status",res);

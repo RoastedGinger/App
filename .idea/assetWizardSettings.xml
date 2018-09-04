@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/usr/local/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_chevron_right_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/usr/local/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/toggle/ic_star_half_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffcc" />
-                            <entry key="outputName" value="ok" />
-                            <entry key="sourceFile" value="$USER_HOME$" />
+                            <entry key="outputName" value="half_star" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/untitled.svg" />
                           </map>
                         </option>
                       </PersistentState>

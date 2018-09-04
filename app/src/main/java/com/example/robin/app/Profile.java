@@ -2,6 +2,8 @@ package com.example.robin.app;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.nfc.TagLostException;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,29 +22,30 @@ import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
+
+import java.awt.font.TextAttribute;
 
 public class Profile extends Fragment{
     WebView mWebView;
+    TextView textView,username;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_notfication,container,false);
-        mWebView = view.findViewById(R.id.profile);
-        mWebView.setWebViewClient(new WebViewClient());
-        mWebView.loadUrl("https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/userprofile.php");
 
-        // Enable Javascript
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // Force links and redirects to open in the WebView instead of in a browser
-        mWebView.setWebViewClient(new WebViewClient());
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+       // textView  = getActivity().findViewById(R.id.logo);
+        username = getActivity().findViewById(R.id.username);
+        Typeface face1 = Typeface.createFromAsset(getActivity().getAssets(),"font/Bilbo-Regular.ttf");
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(),"font/Bilbo Swash Caps.ttf");
+       // textView.setTypeface(face);
+        username.setTypeface(face1);
         FloatingActionButton fab = getActivity().findViewById(R.id.fab3);
         fab.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)

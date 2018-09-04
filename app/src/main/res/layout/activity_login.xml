@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/log"
     android:background="#ffffcc"
@@ -108,7 +109,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:text="forget Password?"
-            android:layout_marginBottom="50sp"
+            android:paddingBottom="50sp"
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView
@@ -124,12 +125,12 @@
 
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/avi"
-            style="@style/AVLoadingIndicatorView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:visibility="invisible"
-            app:indicatorColor="@color/colorPrimaryDark"
+            app1:indicatorColor="@color/colorPrimaryDark"
             app:indicatorName="BallPulseIndicator" />
     </RelativeLayout>
 

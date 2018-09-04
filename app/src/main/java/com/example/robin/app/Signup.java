@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,7 @@ public class Signup extends Fragment {
         plock0 = getActivity().findViewById(R.id.plock0);
         gone = getActivity().findViewById(R.id.show);
         imageView = getActivity().findViewById(R.id.visible);
+
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -157,7 +159,37 @@ public class Signup extends Fragment {
 
             @Override
             public void onClick(View view) {
-                open();
+                un = username.getText().toString();
+                ps = password.getText().toString();
+                repas = repassword.getText().toString();
+                phn = phno.getText().toString();
+                if(TextUtils.isEmpty(un))
+                {
+                    username.setError("Cannot be Empty");
+                }
+                else if(TextUtils.isEmpty(phn))
+                {
+                    phno.setError("cannot be empty");
+                }
+                else if(phn.length()!=10){
+                    phno.setError("Invalid number");
+                }
+                else if(TextUtils.isEmpty(ps) && TextUtils.isEmpty(repas)){
+                    password.setError("password cannot be empty");
+                    repassword.setError("password cannot be empty");
+                }
+
+                else if(!ps.equals(repas))
+                {
+                  Toast.makeText(getActivity(),"password dosent match",Toast.LENGTH_LONG).show();
+                }
+                else if(gender.equals("Gender")){
+                    Toast.makeText(getActivity(),"Please select your Gender",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    open();
+                }
+
             }
         });
 

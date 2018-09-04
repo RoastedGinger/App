@@ -1,6 +1,7 @@
 package com.example.robin.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -36,7 +37,7 @@ public class fompart extends AppCompatActivity implements View.OnClickListener{
     ArrayAdapter<CharSequence> adapter;
     private final int img=1;
     Bitmap bitmap;
-    String part,Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/updatefom.php";
+    String restoredText,part,Server_url = "https://photogenic0001.000webhostapp.com/photogenic/photogenic1.0/updatefom.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +65,9 @@ public class fompart extends AppCompatActivity implements View.OnClickListener{
 
             }
         });
+        SharedPreferences prefs = getSharedPreferences("user",MODE_PRIVATE);
+        restoredText = prefs.getString("status", null);
+
     }
 
     @Override
@@ -133,6 +137,7 @@ public class fompart extends AppCompatActivity implements View.OnClickListener{
                 params.put("name",name.getText().toString());
                 params.put("image",imagetoString(bitmap));
                 params.put("gender",part);
+                params.put("phone",restoredText);
                 return params;
             }
         };

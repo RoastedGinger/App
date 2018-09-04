@@ -159,6 +159,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Phone number"
                 android:inputType="phone"
+                android:maxLength="10"
                 android:paddingStart="30sp"
                 android:textColorHint="@color/colorPrimaryDark" />
 

@@ -1,18 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/notfication"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.robin.app.Profile"
     tools:showIn="@layout/activity_notfication">
 
 
-<WebView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/profile">
-</WebView>
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120sp"
+        android:background="@color/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:id="@+id/linear"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50sp"
+                android:text="Casandra Jiukuji"
+                android:layout_marginTop="20sp"
+                android:textColor="@color/background"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_toEndOf="@+id/down_half"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <RatingBar
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_marginTop="65sp"
+            android:rating="3"
+            android:stepSize="0.5" />
+        </RelativeLayout>
+        <com.github.siyamed.shapeimageview.PentagonImageView
+            android:layout_width="90sp"
+            android:layout_height="90sp"
+            android:layout_marginTop="19sp"
+            android:src="@drawable/asian"
+            android:rotation="180"
+            android:id="@+id/down_half"
+            android:layout_marginStart="13sp"
+            app:siBorderWidth="2sp"
+            app:siBorderColor="#837925">
+        </com.github.siyamed.shapeimageview.PentagonImageView>
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/linear"
+          android:gravity="center"
+          android:layout_marginTop="10sp"
+          android:layout_toEndOf="@+id/down_half">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Followers 180"
+            android:id="@+id/followers"
+            android:layout_marginStart="15sp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scoops"
+
+            android:layout_toEndOf="@+id/followers"
+            android:layout_marginStart="10sp"
+            android:text="Scoops 23"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/scoops"
+            android:layout_marginStart="10sp"
+            android:text="Rating 3.4"
+            />
+      </RelativeLayout>
+
+    </RelativeLayout>
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </WebView>
+
+</LinearLayout>
