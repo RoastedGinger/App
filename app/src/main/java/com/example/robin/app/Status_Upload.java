@@ -103,7 +103,7 @@ public class Status_Upload extends AppCompatActivity implements View.OnClickList
         });
 
         SharedPreferences prefs = getSharedPreferences("user",MODE_PRIVATE);
-        String restoredText = prefs.getString("status", null);
+         restoredText = prefs.getString("status", null);
 
     }
 
