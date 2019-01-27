@@ -1,39 +1,28 @@
 package com.example.robin.app;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.wang.avi.AVLoadingIndicatorView;
-
-import java.io.File;
-import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +36,7 @@ public class Login extends Fragment  {
     TextView signup;
     AVLoadingIndicatorView avi;
     ImageView imageView;
-    FragmentTransaction fragmentTransaction;
+    android.support.v4.app.FragmentTransaction fragmentTransaction;
      public ProgressBar p;
      public Login()
      {
@@ -83,7 +72,7 @@ public class Login extends Fragment  {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
+                android.support.v4.app.FragmentManager fragmentManager = getFragmentManager();
                 Signup signin_form = new Signup();
                 Login login_page = (Login) fragmentManager.findFragmentByTag("login666");
                fragmentTransaction = fragmentManager.beginTransaction();

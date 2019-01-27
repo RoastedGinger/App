@@ -1,6 +1,8 @@
 package com.example.robin.app;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ClipData;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity{
     MenuItem item1;
+
     FragmentManager fragmentManager = getFragmentManager();
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -47,6 +50,7 @@ public class MainActivity extends Activity{
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_notifications:
+
                     fragmentTransaction.replace(R.id.container,profile);
                     //fragmentTransaction.addToBackStack("navigation");
                     fragmentTransaction.commit();
